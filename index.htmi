@@ -1,25 +1,126 @@
-NavidShop/
-│
-├── index.html              ← صفحه اصلی
-├── shop.html               ← فروشگاه
-├── product.html            ← جزئیات محصول
-├── cart.html               ← سبد خرید
-├── checkout.html           ← ثبت سفارش
-├── about.html              ← درباره ما
-├── contact.html            ← تماس با ما
-├── rules.html              ← قوانین
-│
-├── css/
-│   └── style.css           ← طراحی کامل سایت
-│
-├── js/
-│   ├── products.js         ← محصولات
-│   ├── cart.js             ← سبد خرید
-│   ├── search.js           ← جستجو
-│   └── main.js             ← امکانات اصلی
-│
-├── images/
-│   ├── logo.png
-│   └── products/
-│
-└── downloads/
+localStorage.setItem(
+        "mbkshop_cart",
+        JSON.stringify(cart)
+    );
+
+    updateCart();
+
+    alert(
+        "✅ محصول به سبد خرید اضافه شد!"
+    );
+
+}
+
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem(
+        "mbkshop_cart",
+        JSON.stringify(cart)
+    );
+
+    updateCart();
+
+}
+
+
+function updateCart(){
+
+    const container =
+        document.getElementById("cartItems");
+
+    const totalElement =
+        document.getElementById("cartTotal");
+
+
+    if(cart.length === 0){
+
+        container.innerHTML =
+            "سبد خرید خالی است.";
+
+        totalElement.innerHTML =
+            "مجموع: 0 تومان";
+
+        return;
+    }
+
+
+    let total = 0;
+
+    let html = "";
+
+
+    cart.forEach(function(item,index){
+
+        total += item.price;
+
+        html += 
+
+            <div class="cart-item">
+
+                <div>
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        ${item.price.toLocaleString()}
+                        تومان
+                    </span>
+                </div>
+
+                <button
+                    class="remove-btn"
+                    onclick="removeFromCart(${index})">
+
+                    حذف
+
+                </button>
+
+            </div>
+
+        ;
+
+    });
+
+
+    container.innerHTML = html;
+
+
+    totalElement.innerHTML =
+        "مجموع: " +
+        total.toLocaleString() +
+        " تومان";
+
+}
+
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "⚠️ ابتدا یک محصول به سبد خرید اضافه کن."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "💳 بخش پرداخت در مرحله بعدی به درگاه واقعی متصل می‌شود."
+    );
+
+}
+
+
+updateCart();
+
+</script>
+
+</body>
+</html>
