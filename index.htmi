@@ -1,0 +1,25 @@
+NavidShop/
+│
+├── index.html              ← صفحه اصلی
+├── shop.html               ← فروشگاه
+├── product.html            ← جزئیات محصول
+├── cart.html               ← سبد خرید
+├── checkout.html           ← ثبت سفارش
+├── about.html              ← درباره ما
+├── contact.html            ← تماس با ما
+├── rules.html              ← قوانین
+│
+├── css/
+│   └── style.css           ← طراحی کامل سایت
+│
+├── js/
+│   ├── products.js         ← محصولات
+│   ├── cart.js             ← سبد خرید
+│   ├── search.js           ← جستجو
+│   └── main.js             ← امکانات اصلی
+│
+├── images/
+│   ├── logo.png
+│   └── products/
+│
+└── downloads/
